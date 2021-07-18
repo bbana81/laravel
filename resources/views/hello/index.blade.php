@@ -9,16 +9,12 @@
     </style>
 </head>
 <body>
-    <h1>Blade/Index</h1>
-    @isset ($msg)
-    <p>こんにちは、{{$msg}}さん。</p>
-    @else
-    <p>何か書いてください。</p>
-    @endisset
-    <form method='POST' action='/hello'>
-        @csrf
-        <input type='text' name='msg'>
-        <input type='submit'>
-    </form>
+    @section('content')
+    <p>ここが本文のコンテンツです。</p>
+    <table>
+        @foreach($data as $item)
+        <tr><th>{{$item['name']}}</th><td>{{$item['mail']}}</td></tr>
+        @endforeach
+    </table>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Middleware\HelloMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,15 +14,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('hello',[HelloController::class, 'index'])->middleware(HelloMiddleware::class);
 Route::post('hello', [HelloController::class, 'post']);
-Route::get('hello', [HelloController::class, 'index']);
+//Route::get('hello', [HelloController::class, 'index']);
 
 Route::get('hello_tmp', function(){
     $date = ['date' => '2021/07/18'];
     return view('hello.index', $date);
 });
 
-Route::get('hello_test', [HelloController::class, 'index']);
+//Route::get('hello_test', [HelloController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,7 +35,7 @@ Route::get('hello', function () {
 */
 
 
-
+/*
 route::get('hello_html/{msg?}',function ($msg='no message'){
     $html = <<<EOF
     <html>
@@ -52,6 +54,7 @@ route::get('hello_html/{msg?}',function ($msg='no message'){
     EOF;
     return $html;
 });
+*/
 /*
 Route::get('hello_html', function () use ($html) {
     return $html;

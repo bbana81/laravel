@@ -7,6 +7,12 @@ use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
+    public function index(Request $request)
+    {
+        return view('hello.index',['data'=>$request->data]);
+    }
+
+/*
     public function index()
     {
         return view('hello.index');
@@ -16,4 +22,5 @@ class HelloController extends Controller
     {
         return view('hello.index', ['msg'=>$request->msg]);
     }
+*/
 }
